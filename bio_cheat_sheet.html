@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biology Cheat Sheet — Chapters 12, 13, 19, 24</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:wght@700&display=swap');
+
+  :root {
+    --c12: #1a6b4a;
+    --c12l: #e8f5ef;
+    --c12m: #2d9e6e;
+    --c13: #1e4d8c;
+    --c13l: #e8f0fb;
+    --c13m: #2f72cc;
+    --c19: #7a3b00;
+    --c19l: #fdf1e4;
+    --c19m: #c46010;
+    --c24: #6b1a3a;
+    --c24l: #fce8f0;
+    --c24m: #b52a60;
+    --text: #1a1a1a;
+    --muted: #555;
+    --border: #ddd;
+    --bg: #f7f7f5;
+    --white: #fff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .page-header {
+    background: #111;
+    color: #fff;
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  .page-header h1 {
+    font-family: 'Space Mono', monospace;
+    font-size: 17px;
+    letter-spacing: -0.5px;
+  }
+
+  .nav-pills {
+    display: flex;
+    gap: 8px;
+  }
+
+  .nav-pills a {
+    padding: 5px 13px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    transition: opacity 0.15s;
+  }
+  .nav-pills a:hover { opacity: 0.85; }
+  .nav-ch12 { background: var(--c12); color: #fff; }
+  .nav-ch13 { background: var(--c13); color: #fff; }
+  .nav-ch19 { background: var(--c19); color: #fff; }
+  .nav-ch24 { background: var(--c24); color: #fff; }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 28px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .chapter {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .ch-header {
+    padding: 16px 20px;
+    color: #fff;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .ch-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1;
+    opacity: 0.4;
+    min-width: 44px;
+  }
+
+  .ch-title-block {}
+  .ch-num-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    margin-bottom: 3px;
+  }
+  .ch-title { font-size: 16px; font-weight: 700; line-height: 1.2; }
+  .ch-subtitle { font-size: 12px; opacity: 0.75; margin-top: 4px; }
+
+  .ch12 .ch-header { background: var(--c12); }
+  .ch13 .ch-header { background: var(--c13); }
+  .ch19 .ch-header { background: var(--c19); }
+  .ch24 .ch-header { background: var(--c24); }
+
+  .ch-body { padding: 18px 20px; }
+
+  .section {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .section:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+  .section-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 9px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    display: inline-block;
+  }
+
+  .ch12 .section-title { background: var(--c12l); color: var(--c12); }
+  .ch13 .section-title { background: var(--c13l); color: var(--c13); }
+  .ch19 .section-title { background: var(--c19l); color: var(--c19); }
+  .ch24 .section-title { background: var(--c24l); color: var(--c24); }
+
+  .term-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+  }
+
+  .term {
+    background: var(--bg);
+    border-radius: 7px;
+    padding: 8px 11px;
+    border: 1px solid var(--border);
+  }
+
+  .term-name {
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
+
+  .term-def {
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  .ch12 .term-name { color: var(--c12); }
+  .ch13 .term-name { color: var(--c13); }
+  .ch19 .term-name { color: var(--c19); }
+  .ch24 .term-name { color: var(--c24); }
+
+  .flow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    font-size: 12px;
+    padding: 6px 10px;
+    background: var(--bg);
+    border-radius: 7px;
+    border: 1px solid var(--border);
+  }
+
+  .step-num {
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: #fff;
+  }
+
+  .ch12 .step-num { background: var(--c12m); }
+  .ch13 .step-num { background: var(--c13m); }
+  .ch19 .step-num { background: var(--c19m); }
+  .ch24 .step-num { background: var(--c24m); }
+
+  .step-text { color: var(--text); line-height: 1.4; }
+  .step-text strong { font-weight: 600; }
+
+  .list-items {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .list-item {
+    font-size: 12px;
+    padding: 6px 11px;
+    background: var(--bg);
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    line-height: 1.4;
+  }
+
+  .list-item strong { font-weight: 600; }
+
+  .ch12 .list-item strong { color: var(--c12); }
+  .ch13 .list-item strong { color: var(--c13); }
+  .ch19 .list-item strong { color: var(--c19); }
+  .ch24 .list-item strong { color: var(--c24); }
+
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11.5px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .compare-table th {
+    padding: 7px 10px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #fff;
+  }
+  .ch12 .compare-table th { background: var(--c12m); }
+  .ch13 .compare-table th { background: var(--c13m); }
+  .ch19 .compare-table th { background: var(--c19m); }
+  .ch24 .compare-table th { background: var(--c24m); }
+
+  .compare-table td {
+    padding: 6px 10px;
+    border-top: 1px solid #eee;
+    vertical-align: top;
+    line-height: 1.4;
+  }
+
+  .compare-table td:first-child { font-weight: 600; width: 38%; }
+  .compare-table tr:nth-child(even) td { background: #fafafa; }
+
+  .highlight-box {
+    padding: 10px 13px;
+    border-radius: 8px;
+    font-size: 12px;
+    line-height: 1.5;
+    margin-top: 8px;
+    border-left: 3px solid;
+  }
+
+  .ch12 .highlight-box { background: var(--c12l); border-color: var(--c12m); }
+  .ch13 .highlight-box { background: var(--c13l); border-color: var(--c13m); }
+  .ch19 .highlight-box { background: var(--c19l); border-color: var(--c19m); }
+  .ch24 .highlight-box { background: var(--c24l); border-color: var(--c24m); }
+
+  .highlight-box strong { font-weight: 700; }
+
+  .ch12 .highlight-box strong { color: var(--c12); }
+  .ch13 .highlight-box strong { color: var(--c13); }
+  .ch19 .highlight-box strong { color: var(--c19); }
+  .ch24 .highlight-box strong { color: var(--c24); }
+
+  .equation-box {
+    background: #1a1a1a;
+    color: #e8e8e8;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    margin: 8px 0;
+    text-align: center;
+  }
+
+  .equation-label {
+    font-size: 10px;
+    color: #888;
+    margin-bottom: 4px;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-right: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+
+  .tag-key { background: #fff3c4; color: #7a5a00; }
+  .tag-mem { background: #e0f0ff; color: #003a7a; }
+  .tag-exam { background: #ffe0e0; color: #7a0000; }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    margin-top: 8px;
+  }
+
+  .mini-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 8px 11px;
+  }
+
+  .mini-card-title {
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+
+  .ch12 .mini-card-title { color: var(--c12); }
+  .ch13 .mini-card-title { color: var(--c13); }
+  .ch19 .mini-card-title { color: var(--c19); }
+  .ch24 .mini-card-title { color: var(--c24); }
+
+  .mini-card p { font-size: 11.5px; color: var(--muted); line-height: 1.4; }
+
+  @media print {
+    .page-header { position: static; }
+    .container { grid-template-columns: 1fr 1fr; }
+    .chapter { break-inside: avoid; }
+  }
+
+  @media (max-width: 900px) {
+    .container { grid-template-columns: 1fr; }
+    .term-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>📚 Biology Exam Cheat Sheet</h1>
+  <div class="nav-pills">
+    <a href="#ch12" class="nav-ch12">Ch.12 DNA Tech</a>
+    <a href="#ch13" class="nav-ch13">Ch.13 Evolution</a>
+    <a href="#ch19" class="nav-ch19">Ch.19 Vertebrates</a>
+    <a href="#ch24" class="nav-ch24">Ch.24 Immunity</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ============ CHAPTER 12 ============ -->
+  <div class="chapter ch12" id="ch12">
+    <div class="ch-header">
+      <div class="ch-num">12</div>
+      <div class="ch-title-block">
+        <div class="ch-num-label">Chapter 12</div>
+        <div class="ch-title">DNA Technology & Genomics</div>
+        <div class="ch-subtitle">Gene cloning, editing, GMOs, DNA profiling, genomics</div>
+      </div>
+    </div>
+    <div class="ch-body">
+
+      <div class="section">
+        <span class="section-title">Key Terms</span>
+        <div class="term-grid">
+          <div class="term">
+            <div class="term-name">Biotechnology</div>
+            <div class="term-def">Manipulation of organisms or their components for useful products</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Recombinant DNA</div>
+            <div class="term-def">DNA formed by combining pieces from two different organisms</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Plasmid</div>
+            <div class="term-def">Small circular bacterial DNA used as a cloning vector (gene carrier)</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Vector</div>
+            <div class="term-def">DNA carrier (e.g. plasmid) used to introduce foreign gene into a cell</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Restriction Enzyme</div>
+            <div class="term-def">Bacterial enzyme that cuts DNA at specific short sequences (restriction sites)</div>
+          </div>
+          <div class="term">
+            <div class="term-name">DNA Ligase</div>
+            <div class="term-def">"Pasting" enzyme that joins two DNA fragments with covalent bonds</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Sticky Ends</div>
+            <div class="term-def">Single-stranded overhangs left after restriction enzyme cuts; allow complementary bonding</div>
+          </div>
+          <div class="term">
+            <div class="term-name">cDNA</div>
+            <div class="term-def">Complementary DNA made from mRNA using reverse transcriptase; no introns</div>
+          </div>
+          <div class="term">
+            <div class="term-name">CRISPR-Cas9</div>
+            <div class="term-def">Guide RNA directs Cas9 protein to cut specific DNA sequence for editing</div>
+          </div>
+          <div class="term">
+            <div class="term-name">GMO</div>
+            <div class="term-def">Organism with genes altered by artificial means; transgenic if foreign gene added</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Gene Therapy</div>
+            <div class="term-def">Alteration of diseased individual's genes for therapeutic purposes</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Genomics</div>
+            <div class="term-def">Scientific study of whole genomes and their functions</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <span class="section-title">Gene Cloning in Plasmids — Steps</span>
+        <div class="flow-steps">
+          <div class="step"><div class="step-num">1</div><div class="step-text">Isolate <strong>plasmid</strong> from bacterium (vector) + <strong>source DNA</strong> containing gene of interest</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-text">Cut both with the <strong>same restriction enzyme</strong> → creates matching sticky ends</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-text">Mix fragments; complementary sticky ends base-pair; <strong>DNA ligase</strong> joins them → recombinant plasmid</div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-text">Introduce recombinant plasmid into bacterium (<strong>transformation</strong>)</div></div>
+          <div class="step"><div class="step-num">5</div><div class="step-text">Bacterium reproduces → <strong>clone</strong> of cells, each carrying the target gene</div></div>
+          <div class="step"><div class="step-num">6</div><div class="step-text">Harvest gene copies or the <strong>protein product</strong> (e.g. insulin, growth hormone)</div></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <span class="section-title">CRISPR-Cas9 Gene Editing</span>
+        <div class="flow-steps">
+          <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Guide RNA</strong> is designed to be complementary to target DNA sequence</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-text">Guide RNA + <strong>Cas9 protein</strong> complex enters cell</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-text">Cas9 binds to target DNA, <strong>cuts both strands</strong></div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-text">Cell's repair enzymes re-join cut — can <strong>knock out</strong> gene or insert normal copy</div></div>
+        </div>
+        <div class="highlight-box"><strong>Key diff from cloning:</strong> Gene cloning copies a gene exactly; CRISPR-Cas9 <em>modifies</em> a gene inside a living cell. Cas9 can cut any sequence directed by guide RNA.</div>
+      </div>
+
+      <div class="section">
+        <span class="section-title">DNA Profiling (Forensics)</span>
+        <div class="term-grid">
+          <div class="term">
+            <div class="term-name">PCR</div>
+            <div class="term-def">Polymerase Chain Reaction — amplifies specific DNA segment billions of times using <em>primers</em> + heat-stable polymerase. 3 steps: Heat → Cool → Extend (repeat)</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Gel Electrophoresis</div>
+            <div class="term-def">Separates DNA fragments by size. DNA (neg. charge) moves toward positive pole. <em>Shorter = faster</em></div>
+          </div>
+          <div class="term">
+            <div class="term-name">STR Analysis</div>
+            <div class="term-def">Short Tandem Repeats — compare # of repeats at ~13 sites. Match probability &lt;1 in 10 billion. Stored in CODIS database</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Nucleic Acid Probe</div>
+            <div class="term-def">Labeled single-stranded DNA that base-pairs with complementary sequence to locate specific gene</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <span class="section-title">Medical Applications of DNA Technology</span>
+        <div class="list-items">
+          <div class="list-item"><strong>Treating disease:</strong> Human insulin (1982 — first recombinant drug), growth hormone (HGH), TPA (dissolves blood clots)</div>
+          <div class="list-item"><strong>Diagnosing disease:</strong> DNA analysis identifies sickle-cell, hemophilia, cystic fibrosis, Huntington's — even before symptoms</div>
+          <div class="list-item"><strong>Vaccines:</strong> Yeast engineered to produce hepatitis B surface protein; harmless viral mutants used as live vaccines</div>
+          <div class="list-item"><strong>Gene therapy:</strong> Normal allele inserted via retrovirus into patient's cells. Success in SCID (bubble boy disease). Risk: viral DNA may cause cancer</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <span class="section-title">Genomics & The Human Genome</span>
+        <div class="list-items">
+          <div class="list-item"><strong>HGP (Human Genome Project):</strong> Completed 2003. ~3 billion bp; ~21,000 genes; only ~1.5% codes for protein</div>
+          <div class="list-item"><strong>Composition:</strong> Introns 19%, Repetitive DNA 44+15%, Regulatory sequences 5%, Unique noncoding DNA 15%</div>
+          <div class="list-item"><strong>Whole-genome shotgun method:</strong> Chop genome, sequence all fragments, use software to reassemble overlapping sequences</div>
+          <div class="list-item"><strong>Bioinformatics:</strong> Computational analysis of biological data; NCBI/GenBank; BLAST tool compares sequences across species</div>
+          <div class="list-item"><strong>Humans vs. chimps:</strong> Genomes differ by only ~1.2% in single-base substitutions + 2.7% insertions/deletions</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ CHAPTER 13 ============ -->
+  <div class="chapter ch13" id="ch13">
+    <div class="ch-header">
+      <div class="ch-num">13</div>
+      <div class="ch-title-block">
+        <div class="ch-num-label">Chapter 13</div>
+        <div class="ch-title">How Populations Evolve</div>
+        <div class="ch-subtitle">Darwin, evidence for evolution, population genetics, microevolution</div>
+      </div>
+    </div>
+    <div class="ch-body">
+
+      <div class="section">
+        <span class="section-title">Darwin's Theory</span>
+        <div class="list-items">
+          <div class="list-item"><strong>HMS Beagle voyage (1831–1836):</strong> Darwin observed geographic distribution — South American species resembled each other, not European ones. Galápagos finches & tortoises varied island to island</div>
+          <div class="list-item"><strong>Two main ideas:</strong> (1) Species change over time — <em>descent with modification</em>; (2) Mechanism = <strong>natural selection</strong></div>
+          <div class="list-item"><strong>Natural selection logic:</strong> Overproduction → Variation → Heredity → Differential survival = individuals with adaptive traits survive and reproduce more</div>
+          <div class="list-item"><strong>3 Key points:</strong> Populations evolve (not individuals); only heritable traits selected; evolution is not goal-directed</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <span class="section-title">Evidence for Evolution</span>
+        <div class="list-items">
+          <div class="list-item"><strong>Fossil record:</strong> Chronological record in rock strata. Shows transitional forms (e.g., whale ancestors: Pakicetus → Ambulocetus → Rodhocetus → Dorudon → modern whale)</div>
+          <div class="list-item"><strong>Homologous structures:</strong> Same skeletal elements (humerus, radius, ulna) in human, cat, whale, bat forelegs — different functions, same common ancestry</div>
+          <div class="list-item"><strong>Vestigial structures:</strong> Remnants of ancestral features (pelvic bones in whales, appendix)</div>
+          <div class="list-item"><strong>Molecular homology:</strong> All life uses same genetic code. Related species have more similar DNA. Universal genetic code = strong evidence of common ancestor</div>
+          <div class="list-item"><strong>Direct observation:</strong> Pesticide resistance in insects; finch beak size changes (Grants, Galápagos); antibiotic resistance in bacteria</div>
+        </div>
+        <div class="highlight-box"><strong>Evolutionary tree (13.5):</strong> Branch points = common ancestors. Hatch marks show shared derived characters. Tetrapods share limbs; amniotes share amnion; birds share feathers</div>
+      </div>
+
+      <div class="section">
+        <span class="section-title">Population Genetics</span>
+        <div class="term-grid">
+          <div class="term">
+            <div class="term-name">Population</div>
+            <div class="term-def">Group of same species in same area that can interbreed</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Gene Pool</div>
+            <div class="term-def">All allele copies at every locus in all members of a population</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Microevolution</div>
+            <div class="term-def">Change in allele frequencies in a gene pool over generations</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Mutation</div>
+            <div class="term-def">Ultimate source of new alleles; random; usually harmful; only heritable if in gametes</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <span class="section-title">Hardy-Weinberg Equilibrium</span>
+        <div class="highlight-box"><strong>H-W equation:</strong> p² + 2pq + q² = 1 (genotype frequencies) and p + q = 1 (allele frequencies). A population NOT evolving stays in H-W equilibrium.</div>
+        <div class="equation-box">
+          <div class="equation-label">Hardy-Weinberg Equation</div>
+          p² + 2pq + q² = 1
+        </div>
+        <div class="list-items" style="margin-top:8px">
+          <div class="list-item"><strong>5 conditions for equilibrium</strong> (must ALL be met): Very large population · No gene flow · No mutations · Random mating · No natural selection</div>
+          <div class="list-item"><strong>Real populations</strong> rarely meet all 5 → microevolution occurs. H-W used to detect evolution and calculate carrier frequencies (e.g., PKU: q² = 1/10,000 → q = 0.01 → 2pq ≈ 2% carriers)</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <span class="section-title">Mechanisms of Microevolution</span>
+        <div class="term-grid">
+          <div class="term">
+            <div class="term-name">Natural Selection</div>
+            <div class="term-def">Only mechanism that consistently leads to adaptive evolution. Acts on phenotype; heritable traits change in frequency</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Genetic Drift</div>
+            <div class="term-def">Random changes in allele frequency; more impact in small populations. Types: bottleneck effect, founder effect</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Gene Flow</div>
+            <div class="term-def">Movement of alleles between populations when individuals migrate; reduces differences between populations</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Bottleneck Effect</div>
+            <div class="term-def">Disaster drastically reduces population → survivors have reduced genetic variation (e.g., cheetahs, prairie chickens)</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Founder Effect</div>
+            <div class="term-def">Small group colonizes new area → limited gene pool. Explains high frequency of certain disorders in isolated populations</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Relative Fitness</div>
+            <div class="term-def">Contribution an individual makes to the gene pool relative to others = number of fertile offspring</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <span class="section-title">Types of Natural Selection</span>
+        <table class="compare-table">
+          <thead><tr><th>Type</th><th>Effect on Population</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td>Directional</td><td>Shifts phenotype distribution toward one extreme</td><td>Cliff swallows — larger bodies survived cold</td></tr>
+            <tr><td>Stabilizing</td><td>Favors intermediate phenotypes; removes extremes</td><td>Human birth weight (6–8 lbs optimal)</td></tr>
+            <tr><td>Disruptive</td><td>Favors both extremes over intermediate</td><td>African finches with small or large beaks</td></tr>
+            <tr><td>Sexual</td><td>Traits that improve mating success (sexual dimorphism)</td><td>Peacock tail; male elk antlers</td></tr>
+          </tbody>
+        </table>
+        <div class="highlight-box" style="margin-top:8px"><strong>Heterozygote advantage (balancing selection):</strong> Sickle-cell heterozygotes are protected from malaria AND don't suffer severe sickle-cell disease → both alleles maintained in population in malaria regions</div>
+        <div class="highlight-box"><strong>Natural selection cannot fashion perfect organisms because:</strong> acts only on existing variation; limited by historical constraints; adaptations are compromises; chance/environment interact</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ CHAPTER 19 ============ -->
+  <div class="chapter ch19" id="ch19">
+    <div class="ch-header">
+      <div class="ch-num">19</div>
+      <div class="ch-title-block">
+        <div class="ch-num-label">Chapter 19</div>
+        <div class="ch-title">Evolution of Vertebrate Diversity</div>
+        <div class="ch-subtitle">Vertebrate clades, fish → tetrapods, mammals, primates, human evolution</div>
+      </div>
+    </div>
+    <div class="ch-body">
+
+      <div class="section">
+        <span class="section-title">Vertebrate Phylogeny — Key Transitions</span>
+        <div class="flow-steps">
+          <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Vertebral column</strong> → distinguishes vertebrates from other chordates</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Jaws</strong> → evolved from gill-support cartilage; opened new feeding niches</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Lungs/lung derivatives</strong> → shared derived character of ray-fins + lobe-fins</div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Lobed fins</strong> (rod-shaped bones) → precursor to tetrapod limbs</div></div>
+          <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Tetrapod limbs (legs)</strong> → transition to land; amphibians first</div></div>
+          <div class="step"><div class="step-num">6</div><div class="step-text"><strong>Amniotic egg</strong> → watertight; allowed complete life cycle on land; reptiles + mammals</div></div>
+          <div class="step"><div class="step-num">7</div><div class="step-text"><strong>Milk (mammary glands + hair)</strong> → distinguishes mammals</div></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <span class="section-title">Major Vertebrate Groups</span>
+        <table class="compare-table">
+          <thead><tr><th>Group</th><th>Key Features</th></tr></thead>
+          <tbody>
+            <tr><td>Hagfishes & Lampreys</td><td>Jawless; notochord main support in adult; lampreys are parasites; hagfish produce slime</td></tr>
+            <tr><td>Chondrichthyans (sharks/rays)</td><td>Cartilage skeleton; lateral line system; electrosensors; must swim to breathe</td></tr>
+            <tr><td>Ray-finned fishes</td><td>Bony skeleton; operculum; swim bladder (buoyancy); >27,000 species</td></tr>
+            <tr><td>Lobe-finned fishes</td><td>Rod-shaped bones in muscular fins; coelacanth, lungfish, tetrapods</td></tr>
+            <tr><td>Amphibians</td><td>Tetrapods; moist skin for gas exchange; eggs in water; tadpole stage; first land vertebrates</td></tr>
+            <tr><td>Reptiles (incl. birds)</td><td>Amniotic egg; dry scaly skin; ectothermic (except birds); dinosaur descendants survive as birds</td></tr>
+            <tr><td>Birds</td><td>Feathered reptiles; endothermic; 4-chambered heart; hollow bones; evolved from theropod dinosaurs</td></tr>
+            <tr><td>Mammals</td><td>Hair; mammary glands; endothermic; monotremes lay eggs; marsupials have pouch; eutherians = placental</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section">
+        <span class="section-title">Tetrapod Evolution — Key Fossils</span>
+        <div class="list-items">
+          <div class="list-item"><strong>Eusthenopteron (385 mya):</strong> Fish with rod-shaped fin bones; lung-like structures</div>
+          <div class="list-item"><strong>Panderichthys (385 mya):</strong> Fish-like but crocodile-shaped head; fins with fish-like rays; had lungs + gills</div>
+          <div class="list-item"><strong>Tiktaalik (375 mya):</strong> "Large freshwater fish" — part fin/part foot; tetrapod-like neck; could prop itself on bottom; perfectly intermediate</div>
+          <div class="list-item"><strong>Acanthostega (365 mya):</strong> Fishlike tetrapod; neck + 4 limbs with toes but couldn't support weight on land; showed first tetrapods were aquatic</div>
+          <div class="list-item"><strong>Ichthyostega (365 mya):</strong> Advanced tetrapod features; flipper-like hind limbs; powerful shoulders</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <span class="section-title">Primate Diversity</span>
+        <div class="term-grid">
+          <div class="term">
+            <div class="term-name">Primate Features</div>
+            <div class="term-def">Short snout; forward-facing eyes; limber joints; five mobile digits; flexible thumb — adaptations for tree life</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Anthropoids</div>
+            <div class="term-def">Monkeys + apes; fully opposable thumb; larger brain. Old World monkeys (Africa/Asia) vs. New World (Americas)</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Apes</div>
+            <div class="term-def">No tail; long arms; large brains. Gibbons, orangutans, gorillas, chimpanzees, humans</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Hominins</div>
+            <div class="term-def">Species more closely related to humans than chimps; ~20 known extinct species. Human + chimp lineages diverged ~6–7 mya</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <span class="section-title">Human Evolution — Hominin Timeline</span>
+        <div class="list-items">
+          <div class="list-item"><strong>Sahelanthropus tchadensis (~6.5 mya):</strong> Oldest known hominin; may have walked upright</div>
+          <div class="list-item"><strong>Ardipithecus ramidus (~4.4 mya):</strong> Woodland creature; walked upright AND in trees; small brain</div>
+          <div class="list-item"><strong>Australopithecus afarensis (~3.2 mya):</strong> "Lucy" — bipedal; small brain (~same as chimp); long curved fingers; walked for ≥1 million years. Laetoli footprints confirm bipedalism</div>
+          <div class="list-item"><strong>Homo habilis ("handy man", ~2.4–1.6 mya):</strong> First Homo; brain 510–690 cm³; crude stone tools</div>
+          <div class="list-item"><strong>H. ergaster (~1.9–1.0 mya):</strong> Brain 750–850 cm³; modern proportions; sophisticated tools; first to leave Africa</div>
+          <div class="list-item"><strong>H. erectus (~1.8 mya–200,000 ya):</strong> Brain ~940 cm³; spread to Asia; found in Georgia, China, Indonesia</div>
+          <div class="list-item"><strong>H. neanderthalensis (~350,000–28,000 ya):</strong> Brain larger than ours; hunted big game; tools; Europeans/Asians carry ~2% Neanderthal DNA</div>
+          <div class="list-item"><strong>H. sapiens (~200,000 ya–present):</strong> Brain ~1,300 cm³; originated in Africa; evidence = fossil + mitochondrial DNA + Y chromosome analysis</div>
+        </div>
+        <div class="highlight-box"><strong>Key insight:</strong> Bipedalism came FIRST (>4 mya), brain enlargement came MUCH LATER (~2 mya). Bipedalism is the initial key derived character of hominins.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ CHAPTER 24 ============ -->
+  <div class="chapter ch24" id="ch24">
+    <div class="ch-header">
+      <div class="ch-num">24</div>
+      <div class="ch-title-block">
+        <div class="ch-num-label">Chapter 24</div>
+        <div class="ch-title">The Immune System</div>
+        <div class="ch-subtitle">Innate immunity, adaptive immunity, lymphocytes, antibodies, disorders</div>
+      </div>
+    </div>
+    <div class="ch-body">
+
+      <div class="section">
+        <span class="section-title">Two Branches of Immunity</span>
+        <table class="compare-table">
+          <thead><tr><th>Feature</th><th>Innate Immunity</th><th>Adaptive Immunity</th></tr></thead>
+          <tbody>
+            <tr><td>Speed</td><td>Immediate (always ready)</td><td>Slow (days to activate)</td></tr>
+            <tr><td>Specificity</td><td>Broad (general pathogens)</td><td>Highly specific (one antigen)</td></tr>
+            <tr><td>Memory</td><td>None</td><td>Yes — decades-long</td></tr>
+            <tr><td>Found in</td><td>All animals</td><td>Vertebrates only</td></tr>
+            <tr><td>Key cells</td><td>Phagocytes, NK cells</td><td>B cells, T cells (lymphocytes)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section">
+        <span class="section-title">Innate Immunity</span>
+        <div class="two-col">
+          <div class="mini-card">
+            <div class="mini-card-title">External Barriers</div>
+            <p>Skin, acidic secretions, mucous membranes, cilia (sweep pathogens out), microbiota balance</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-title">Internal Defenses</div>
+            <p>Phagocytes (neutrophils + macrophages), natural killer cells, interferons, complement system, inflammatory response</p>
+          </div>
+        </div>
+        <div class="list-items" style="margin-top:8px">
+          <div class="list-item"><strong>Phagocytosis:</strong> Pathogen engulfed → vacuole forms → lysosome fuses → enzymes destroy pathogen → debris released by exocytosis</div>
+          <div class="list-item"><strong>Natural Killer Cells:</strong> Recognize & destroy cancer cells and virus-infected cells; release chemicals causing cell death</div>
+          <div class="list-item"><strong>Interferons:</strong> Proteins released by virus-infected cells; trigger nearby cells to produce substances that inhibit viral replication</div>
+          <div class="list-item"><strong>Complement System:</strong> ~30 proteins; activated by pathogen surfaces; causes cell lysis, enhances phagocytosis, recruits more immune cells</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <span class="section-title">Inflammatory Response (24.2)</span>
+        <div class="flow-steps">
+          <div class="step"><div class="step-num">1</div><div class="step-text">Tissue injury → bacteria activate <strong>macrophages</strong> → release signaling molecules → <strong>mast cells</strong> release <strong>histamine</strong></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-text">Histamine causes blood capillaries to <strong>dilate and become leaky</strong> → fluid + proteins move into tissue → redness, heat, swelling</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Neutrophils</strong> squeeze out of leaky capillaries, enter tissue, engulf bacteria and cell debris</div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-text">Clotting proteins + platelets form clot to seal infection; neutrophils die → pus; <strong>tissue heals</strong></div></div>
+        </div>
+        <div class="highlight-box"><strong>Chronic inflammation</strong> associated with arthritis, heart disease, Alzheimer's, some cancers. <strong>Septic shock</strong> = overwhelming systemic inflammation → fluid accumulation, low blood pressure, organ failure</div>
+      </div>
+
+      <div class="section">
+        <span class="section-title">Adaptive Immunity — Key Terms</span>
+        <div class="term-grid">
+          <div class="term">
+            <div class="term-name">Antigen</div>
+            <div class="term-def">Foreign molecule that triggers adaptive response. Antigens have multiple <em>epitopes</em> (binding sites)</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Antibody</div>
+            <div class="term-def">Immune protein (Y-shaped, 4 polypeptide chains) that binds specific antigen. Made by B cells. Marks invaders for destruction</div>
+          </div>
+          <div class="term">
+            <div class="term-name">B Cells</div>
+            <div class="term-def">Mature in bone marrow; humoral response; secrete antibodies into blood/lymph against free-floating antigens</div>
+          </div>
+          <div class="term">
+            <div class="term-name">T Cells</div>
+            <div class="term-def">Mature in thymus; cell-mediated response (helper T) or cytotoxic T cells that destroy infected cells</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Helper T Cell</div>
+            <div class="term-def">Triggers both humoral AND cell-mediated responses. Recognizes self-nonself complex on antigen-presenting cell (macrophage)</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Cytotoxic T Cell</div>
+            <div class="term-def">Destroys infected body cells. Releases <em>perforin</em> → holes in membrane → enzymes kill cell. Also fights some cancers</div>
+          </div>
+          <div class="term">
+            <div class="term-name">MHC Molecules</div>
+            <div class="term-def">Major histocompatibility complex — self proteins on cell surfaces; molecular "fingerprints"; >100 alleles → unique to each person (except identical twins)</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Antigen-Presenting Cell</div>
+            <div class="term-def">Macrophage or B cell displays self-nonself complex to helper T cell to activate immune response</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <span class="section-title">Clonal Selection (24.7)</span>
+        <div class="flow-steps">
+          <div class="step"><div class="step-num">1</div><div class="step-text">Antigen enters lymph node; binds only to B/T cells with <strong>matching antigen receptors</strong></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-text">Selected cell is activated → proliferates → forms a <strong>clone</strong> of thousands of identical cells</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-text">Clone differentiates into <strong>effector cells</strong> (fight current infection; live 4–5 days) AND <strong>memory cells</strong> (last decades)</div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-text">Effector B cells → secrete 2,000 antibodies/second. Memory cells wait for next exposure</div></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <span class="section-title">Primary vs. Secondary Immune Response</span>
+        <table class="compare-table">
+          <thead><tr><th>Feature</th><th>Primary Response</th><th>Secondary Response</th></tr></thead>
+          <tbody>
+            <tr><td>When</td><td>First exposure to antigen</td><td>Re-exposure to same antigen</td></tr>
+            <tr><td>Speed</td><td>Slow (days to weeks)</td><td>Fast (starts within days)</td></tr>
+            <tr><td>Antibody level</td><td>Lower peak</td><td>Much higher peak</td></tr>
+            <tr><td>Duration</td><td>Shorter</td><td>Longer/more prolonged</td></tr>
+            <tr><td>Why faster</td><td>Few lymphocytes with right receptor</td><td>Large pool of memory cells already present</td></tr>
+          </tbody>
+        </table>
+        <div class="highlight-box"><strong>Vaccination:</strong> Vaccine (harmless antigen) induces primary response + memory cells. Real pathogen → rapid secondary response before illness develops. This is <em>active immunity</em>. <strong>Passive immunity</strong> = premade antibodies injected (antivenom); temporary, no memory cells</div>
+      </div>
+
+      <div class="section">
+        <span class="section-title">Antibody Function (24.9)</span>
+        <div class="list-items">
+          <div class="list-item"><strong>Neutralization:</strong> Antibodies block viral binding sites or coat bacteria → prevent infection + enhance phagocytosis</div>
+          <div class="list-item"><strong>Complement activation:</strong> Antibody-bound antigens activate complement proteins → membrane attack complexes → cell lysis (rupture)</div>
+          <div class="list-item"><strong>Structure:</strong> Y-shaped; 4 polypeptide chains; 2 antigen-binding sites at tips; stem helps dispose of bound antigen</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <span class="section-title">Disorders of the Immune System</span>
+        <div class="term-grid">
+          <div class="term">
+            <div class="term-name">HIV/AIDS</div>
+            <div class="term-def">HIV destroys helper T cells → both humoral + cell-mediated responses fail → opportunistic infections (e.g., <em>P. carinii</em> pneumonia, Kaposi's sarcoma). Transmitted via body fluids</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Autoimmune Diseases</div>
+            <div class="term-def">Immune system attacks body's own molecules. Examples: lupus (antibodies vs. DNA/histones), rheumatoid arthritis (synovium), MS (myelin sheath), type 1 diabetes (pancreatic cells)</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Allergies</div>
+            <div class="term-def">Overreaction to harmless allergens (pollen, pet proteins). Stage 1: sensitization — B cells make antibodies that attach to mast cells. Stage 2: allergen binds mast cell → histamine release → symptoms</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Anaphylactic Shock</div>
+            <div class="term-def">Severe allergic reaction; massive histamine → airways constrict, blood vessels dilate → dangerous drop in blood pressure. Treated with epinephrine (EpiPen)</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Immunodeficiency</div>
+            <div class="term-def">Underreaction; immune response defective or absent. SCID = no functional B or T cells. Acquired immunodeficiency: AIDS, Hodgkin's, chemotherapy</div>
+          </div>
+          <div class="term">
+            <div class="term-name">Antihistamines</div>
+            <div class="term-def">Drugs that block histamine action; give temporary relief from allergy symptoms</div>
+          </div>
+        </div>
+        <div class="highlight-box"><strong>HIV rapid evolution:</strong> Reverse transcriptase lacks proofreading → high mutation rate → drug-resistant strains evolve rapidly. Patients given multidrug regimens to combat this. Drug-resistant strains now transmitted to newly infected patients</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- Quick Reference Footer -->
+<div style="background:#111; color:#ccc; padding:20px 32px; margin-top:8px; font-size:12px;">
+  <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns: repeat(4,1fr); gap:20px;">
+    <div>
+      <div style="color:#2d9e6e; font-weight:700; margin-bottom:8px; font-size:13px;">Ch.12 Must-Know</div>
+      <div>• Restriction enzyme cuts at specific sequence → sticky ends</div>
+      <div>• PCR: Heat → Cool → Extend (primers key)</div>
+      <div>• STR analysis = 13 sites, CODIS database</div>
+      <div>• Human genome: ~21,000 genes, 3 billion bp, only 1.5% codes for protein</div>
+      <div>• CRISPR: guide RNA + Cas9 = precise gene editing</div>
+    </div>
+    <div>
+      <div style="color:#2f72cc; font-weight:700; margin-bottom:8px; font-size:13px;">Ch.13 Must-Know</div>
+      <div>• Natural selection: heritable variation + differential survival</div>
+      <div>• H-W equation: p² + 2pq + q² = 1</div>
+      <div>• Only natural selection → adaptive evolution</div>
+      <div>• Directional / Stabilizing / Disruptive selection</div>
+      <div>• Bottleneck + founder effect = genetic drift types</div>
+    </div>
+    <div>
+      <div style="color:#c46010; font-weight:700; margin-bottom:8px; font-size:13px;">Ch.19 Must-Know</div>
+      <div>• Vertebrate clade sequence: jawless → jaws → lungs → lobed fins → legs → amniotic egg → milk</div>
+      <div>• Tiktaalik = "missing link" fish-tetrapod</div>
+      <div>• Bipedalism came BEFORE big brains</div>
+      <div>• Lucy (A. afarensis) = bipedal, 3.2 mya</div>
+      <div>• H. sapiens originated in Africa ~200,000 ya</div>
+    </div>
+    <div>
+      <div style="color:#b52a60; font-weight:700; margin-bottom:8px; font-size:13px;">Ch.24 Must-Know</div>
+      <div>• Innate = all animals, no memory; Adaptive = vertebrates only, has memory</div>
+      <div>• Clonal selection → effector cells + memory cells</div>
+      <div>• Helper T cell activates BOTH humoral + cell-mediated</div>
+      <div>• Secondary response faster/stronger = basis of vaccination</div>
+      <div>• HIV destroys helper T cells → AIDS</div>
+      <div>• Allergy = mast cells + histamine</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
